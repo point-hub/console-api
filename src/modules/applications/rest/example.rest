@@ -1,0 +1,107 @@
+@baseUrl = {{$dotenv BASE_URL}}
+
+###
+# @name createApplication
+# @prompt name
+POST {{baseUrl}}/v1/applications HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "{{name}}"
+}
+
+###
+# @name createManyApplication
+# @prompt name1
+# @prompt name2
+POST {{baseUrl}}/v1/applications/create-many HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+[
+  {
+    "name": "{{name1}}"
+  },
+  {
+    "name": "{{name2}}"
+  }
+]
+
+###
+# @name retrieveAllApplication
+GET {{baseUrl}}/v1/applications HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+###
+# @name retrieveApplication
+# @prompt id
+GET {{baseUrl}}/v1/applications/{{id}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+###
+# @name updateApplication
+# @prompt id
+# @prompt name
+PATCH {{baseUrl}}/v1/applications/{{id}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "{{name}}",
+}
+
+###
+# @name updateManyApplication
+# @prompt name
+# @prompt newName
+POST {{baseUrl}}/v1/applications/update-many HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "filter": {
+    "name": "{{name}}"
+  },
+  "data": {
+    "newName": "{{newName}}"
+  }
+}
+
+###
+# @name deleteApplication
+# @prompt id
+DELETE {{baseUrl}}/v1/applications/{{id}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+###
+# @name deleteManyApplication
+# @prompt id1
+# @prompt id2
+POST {{baseUrl}}/v1/applications/delete-many HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "ids": ["{{id1}}","{{id2}}"]
+}
+
+###
+# @name createTransactionApplication
+# @prompt name1
+# @prompt name2
+POST {{baseUrl}}/v1/applications/transaction HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "data1": {
+    "name": "{{name1}}"
+  },
+  "data2": {
+    "name": "{{name2}}"
+  }
+}
