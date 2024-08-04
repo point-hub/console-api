@@ -1,0 +1,81 @@
+@baseUrl = {{$dotenv BASE_URL}}
+
+###
+# @name signup
+# @prompt name
+# @prompt username
+# @prompt email
+# @prompt password
+POST {{baseUrl}}/v1/auth/signup HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "{{name}}",
+  "username": "{{username}}",
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+###
+# @name verifyEmail
+# @prompt code
+POST https://api.auth.pointhub.net/v1/auth/verify-email HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+  "code": "{{code}}"
+}
+
+###
+# @name signin
+# @prompt username
+# @prompt password
+POST https://api.auth.pointhub.net/v1/auth/signin HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "{{username}}",
+  "password": "{{password}}"  
+}
+
+###
+# @name existingEmail
+# @prompt email
+POST {{baseUrl}}/v1/auth/existing-email HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "{{email}}"
+}
+
+###
+# @name existingUsername
+# @prompt username
+POST {{baseUrl}}/v1/auth/existing-username HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "{{username}}"
+}
+
+###
+# @name googleAuth
+POST {{baseUrl}}/v1/auth/google HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{}
+
+###
+# @name githubAuth
+POST {{baseUrl}}/v1/auth/github HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{}

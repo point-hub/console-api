@@ -1,14 +1,9 @@
 export const seeds = [
   {
-    name: 'User 1',
-    created_date: new Date(),
-  },
-  {
-    name: 'User 2',
-    created_date: new Date(),
-  },
-  {
-    name: 'User 3',
+    name: 'admin',
+    username: 'admin',
+    email: 'admin@example.com',
+    password: await Bun.password.hash('Admin12#$'),
     created_date: new Date(),
   },
 ]

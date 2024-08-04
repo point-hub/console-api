@@ -1,0 +1,102 @@
+@baseUrl = http://localhost:3000
+
+###
+# @name signup
+# @prompt name
+# @prompt username
+# @prompt email
+# @prompt password
+POST {{baseUrl}}/v1/users HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "{{name}}",
+  "username": "{{username}}",
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+###
+# @name retrieveExistingEmail
+GET {{baseUrl}}/v1/users HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+###
+# @name retrieveUser
+# @prompt id
+GET {{baseUrl}}/v1/users/{{id}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+###
+# @name updateUser
+# @prompt id
+# @prompt name
+# @prompt phone
+PATCH {{baseUrl}}/v1/users/{{id}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "{{name}}",
+  "phone": "{{phone}}"
+}
+
+###
+# @name updateManyUser
+# @prompt name
+# @prompt phone
+POST {{baseUrl}}/v1/users/update-many HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "filter": {
+    "name": "{{name}}"
+  },
+  "data": {
+    "phone": "{{phone}}"
+  }
+}
+
+###
+# @name deleteUser
+# @prompt id
+DELETE {{baseUrl}}/v1/users/{{id}} HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+###
+# @name deleteManyUser
+# @prompt id1
+# @prompt id2
+POST {{baseUrl}}/v1/users/delete-many HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "ids": ["{{id1}}","{{id2}}"]
+}
+
+###
+# @name createTransactionUser
+# @prompt name1
+# @prompt phone1
+# @prompt name2
+# @prompt phone2
+POST {{baseUrl}}/v1/users/transaction HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "data1": {
+    "name": "{{name1}}",
+    "phone": "{{phone1}}"  
+  },
+  "data2": {
+    "name": "{{name2}}",
+    "phone": "{{phone2}}"  
+  }
+}

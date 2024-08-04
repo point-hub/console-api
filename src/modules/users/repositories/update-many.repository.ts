@@ -3,11 +3,9 @@ import type { IDatabase, IDocument, IUpdateManyOutput, IUpdateManyRepository } f
 import { collectionName } from '../entity'
 
 export class UpdateManyRepository implements IUpdateManyRepository {
-  public collection = collectionName
-
   constructor(public database: IDatabase) {}
 
   async handle(filter: IDocument, document: IDocument, options?: unknown): Promise<IUpdateManyOutput> {
-    return await this.database.collection(this.collection).updateMany(filter, document, options)
+    return await this.database.collection(collectionName).updateMany(filter, document, options)
   }
 }

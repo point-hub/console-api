@@ -9,65 +9,17 @@ const makeRouter = async (routerInput: IBaseAppInput) => {
   const router = Router()
 
   router.post(
-    '/',
+    '/signup',
     await makeController({
-      controller: controller.createUserController,
+      controller: controller.signupController,
       dbConnection: routerInput.dbConnection,
     }),
   )
-  router.get(
-    '/',
-    await makeController({
-      controller: controller.retrieveAllUserController,
-      dbConnection: routerInput.dbConnection,
-    }),
-  )
-  router.get(
-    '/:id',
-    await makeController({
-      controller: controller.retrieveUserController,
-      dbConnection: routerInput.dbConnection,
-    }),
-  )
-  router.patch(
-    '/:id',
-    await makeController({
-      controller: controller.updateUserController,
-      dbConnection: routerInput.dbConnection,
-    }),
-  )
-  router.delete(
-    '/:id',
-    await makeController({
-      controller: controller.deleteUserController,
-      dbConnection: routerInput.dbConnection,
-    }),
-  )
+
   router.post(
-    '/create-many',
+    '/signin',
     await makeController({
-      controller: controller.createManyUserController,
-      dbConnection: routerInput.dbConnection,
-    }),
-  )
-  router.post(
-    '/update-many',
-    await makeController({
-      controller: controller.updateManyUserController,
-      dbConnection: routerInput.dbConnection,
-    }),
-  )
-  router.post(
-    '/delete-many',
-    await makeController({
-      controller: controller.deleteManyUserController,
-      dbConnection: routerInput.dbConnection,
-    }),
-  )
-  router.post(
-    '/transaction',
-    await makeController({
-      controller: controller.transactionUserController,
+      controller: controller.signinController,
       dbConnection: routerInput.dbConnection,
     }),
   )
